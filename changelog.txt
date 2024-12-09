@@ -1,3 +1,8 @@
+Version: 0.0.16
+Date: 2024-12-09
+  Features:
+    - Simplified Chinese translation by cyx2015s
+---------------------------------------------------------------------------------------------------
 Version: 0.0.15
 Date: 2024-12-09
   Features:
