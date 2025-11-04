@@ -556,8 +556,11 @@ for _, item in pairs(data.raw["item"]) do
     item.default_import_location = "nauvis"
 end
 
-data.raw.technology.recycling.prerequisites = {"processing-unit", "concrete"}
-{"battery", "low-density-structure"}
+if scrap_recipe_setting == "ore-only" then
+    data.raw.technology.recycling.prerequisites = {"processing-unit", "concrete"}
+else
+    data.raw.technology.recycling.prerequisites = {"processing-unit", "concrete", "battery", "low-density-structure"}
+end
 data.raw.technology.recycling.research_trigger = nil
 data.raw.technology.recycling.unit =
 {

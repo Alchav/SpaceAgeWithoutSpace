@@ -6,6 +6,7 @@ Date: 2025-11-04
     - "Nerfed" option for Scrap Recycling Recipe, which gives no Ice and 90% fewer Processing Units, Advanced Electronic Circuits, LDS, Solid Fuel, Steel Plate, and Batteries. This is now the default.
   Changes:
     - Rocket Silo research now additionally requires Speed Module 3, Productivity Module 3, Solar Panel, Accumulator, and Radar
+    - Recycling research requires only Concrete and Processing Unit if Scrap Recycling Recipe is set to Ore Only, otherwise it additionally requires Low Density Structure and Battery
   Fixes:
     - Victory screen should no longer be broken
     - Atomic Bombs should behave as would be expected on Nauvis
