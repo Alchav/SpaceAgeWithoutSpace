@@ -3,7 +3,7 @@ data:extend({
     type = "string-setting",
     name = "saws-scrap-recipe",
     setting_type = "startup",
-    default_value = "space-age",
+    default_value = "nerfed",
     allowed_values = { "space-age", "nerfed", "no-ice", "ore-only" },
     order = "a-ab"
   },
