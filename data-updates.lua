@@ -525,22 +525,21 @@ if scrap_recipe_setting == "no-ice" then
           {type = "item", name = "iron-gear-wheel",        amount = 1, probability = 0.20, show_details_in_recipe_tooltip = false},
           {type = "item", name = "copper-cable",           amount = 1, probability = 0.03, show_details_in_recipe_tooltip = false}
         }
--- elseif scrap_recipe_setting == "nerfed" then
---     data.raw.recipe["scrap-recycling"].results =
---         {
---           {type = "item", name = "selector-combinator",    amount = 1, probability = 0.01, show_details_in_recipe_tooltip = false},
---           {type = "item", name = "electronic-circuit",     amount = 1, probability = 0.02, show_details_in_recipe_tooltip = false},
---           {type = "item", name = "coal",                   amount = 1, probability = 0.07, show_details_in_recipe_tooltip = false},
---           {type = "item", name = "barrel",                 amount = 1, probability = 0.04, show_details_in_recipe_tooltip = false},
---           {type = "item", name = "burner-inserter",        amount = 1, probability = 0.05, show_details_in_recipe_tooltip = false},
---           {type = "item", name = "small-lamp",             amount = 1, probability = 0.05, show_details_in_recipe_tooltip = false},
---           {type = "item", name = "concrete",               amount = 1, probability = 0.06, show_details_in_recipe_tooltip = false},
---           {type = "item", name = "battery",                amount = 1, probability = 0.02, show_details_in_recipe_tooltip = false},
---           {type = "item", name = "stone",                  amount = 1, probability = 0.04, show_details_in_recipe_tooltip = false},
---           {type = "item", name = "holmium-ore",            amount = 1, probability = 0.01, show_details_in_recipe_tooltip = false},
---           {type = "item", name = "iron-gear-wheel",        amount = 1, probability = 0.15, show_details_in_recipe_tooltip = false},
---           {type = "item", name = "copper-cable",           amount = 1, probability = 0.02, show_details_in_recipe_tooltip = false}
---         }
+elseif scrap_recipe_setting == "nerfed" then
+    data.raw.recipe["scrap-recycling"].results =
+        {
+          {type = "item", name = "processing-unit",        amount = 1, probability = 0.002, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "advanced-circuit",       amount = 1, probability = 0.003, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "low-density-structure",  amount = 1, probability = 0.001, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "solid-fuel",             amount = 1, probability = 0.007, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "steel-plate",            amount = 1, probability = 0.004, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "concrete",               amount = 1, probability = 0.06, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "battery",                amount = 1, probability = 0.004, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "stone",                  amount = 1, probability = 0.04, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "holmium-ore",            amount = 1, probability = 0.01, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "iron-gear-wheel",        amount = 1, probability = 0.20, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "copper-cable",           amount = 1, probability = 0.03, show_details_in_recipe_tooltip = false}
+        }
 elseif scrap_recipe_setting == "ore-only" then
     data.raw.recipe["scrap-recycling"].results =
         {
@@ -557,7 +556,8 @@ for _, item in pairs(data.raw["item"]) do
     item.default_import_location = "nauvis"
 end
 
-data.raw.technology.recycling.prerequisites = {"processing-unit", "concrete", "battery"}
+data.raw.technology.recycling.prerequisites = {"processing-unit", "concrete"}
+{"battery", "low-density-structure"}
 data.raw.technology.recycling.research_trigger = nil
 data.raw.technology.recycling.unit =
 {

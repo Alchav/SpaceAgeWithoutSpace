@@ -1,8 +1,9 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.0.17
-Data: 2025-11-04
+Date: 2025-11-04
   Features:
-    - Options to turn off Lava/Lava Processing and Bacteria Cultivation
+    - Options to turn off Lava/Lava Processing and Bacteria Cultivation (default off)
+    - "Nerfed" option for Scrap Recycling Recipe, which gives no Ice and 90% fewer Processing Units, Advanced Electronic Circuits, LDS, Solid Fuel, Steel Plate, and Batteries. This is now the default.
   Changes:
     - Rocket Silo research now additionally requires Speed Module 3, Productivity Module 3, Solar Panel, Accumulator, and Radar
   Fixes:
