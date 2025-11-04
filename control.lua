@@ -4,7 +4,7 @@ handler.add_lib(require("silo-script"))
 local init_ending_info = function()
   local info =
   {
-    image_path = "victory.png",
+    image_path = "__SpaceAgeWithoutSpace__/graphics/victory.png",
     title = {"gui-game-finished.victory"},
     message = {"victory-message"},
     bullet_points =

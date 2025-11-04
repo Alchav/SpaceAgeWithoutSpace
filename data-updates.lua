@@ -52,7 +52,6 @@ data.raw.planet.nauvis.map_gen_settings.autoplace_controls["sulfuric_acid_geyser
 data.raw.planet.nauvis.map_gen_settings.autoplace_settings.entity.settings["sulfuric-acid-geyser"] = {}
 data.raw.planet.nauvis.map_gen_settings.autoplace_controls["oil_sand"] = {}
 data.raw.planet.nauvis.map_gen_settings.autoplace_controls["ammoniacal_ocean"] = {}
-data.raw.planet.nauvis.map_gen_settings.autoplace_settings.tile.settings["lava"] = {}
 data.raw.planet.nauvis.map_gen_settings.autoplace_settings.tile.settings["oil-ocean-deep"] = {}
 data.raw.planet.nauvis.map_gen_settings.property_expression_names["entity:tungsten-ore:probability"] = "vulcanus_tungsten_ore_probability"
 data.raw.planet.nauvis.map_gen_settings.property_expression_names["entity:tungsten-ore:richness"] = "vulcanus_tungsten_ore_richness"
@@ -71,9 +70,7 @@ data.raw["autoplace-control"]["tungsten_ore"]["can_be_disabled"] = false
 data.raw["autoplace-control"]["scrap"]["can_be_disabled"] = false
 data.raw["autoplace-control"]["lithium_brine"]["can_be_disabled"] = false
 data.raw["autoplace-control"]["fluorine_vent"]["can_be_disabled"] = false
-data.raw["autoplace-control"]["vulcanus_volcanism"]["can_be_disabled"] = true
-data.raw["autoplace-control"]["vulcanus_volcanism"]["order"] = nil
-data.raw["autoplace-control"]["vulcanus_volcanism"]["category"] = "resource"
+
 data:extend({
 --     {
 --         type = "autoplace-control",
@@ -110,30 +107,7 @@ data.raw.tile["oil-ocean-deep"].autoplace = resource_autoplace.resource_autoplac
       has_starting_area_placement = false,
       autoplace_control_name = "oil_sand"
     }
-data.raw.tile["lava"].autoplace = resource_autoplace.resource_autoplace_settings
-    {
-      name = "lava",
-      order = "a",
-      base_density = 7,
-      base_spots_per_km2 = 0.04,
-      random_probability = 1,
-      random_spot_size_minimum = 0.2,
-      random_spot_size_maximum = 0.7,
-      has_starting_area_placement = false,
-      autoplace_control_name = "vulcanus_volcanism"
-    }
-data.raw.tile["lava-hot"].autoplace = resource_autoplace.resource_autoplace_settings
-    {
-      name = "lava",
-      order = "a",
-      base_density = 7,
-      base_spots_per_km2 = 0.01,
-      random_probability = 1,
-      random_spot_size_minimum = 0.2,
-      random_spot_size_maximum = 0.6,
-      has_starting_area_placement = false,
-      autoplace_control_name = "vulcanus_volcanism"
-    }
+
 
 gleba_land_tiles = {
   "natural-yumako-soil",
@@ -283,7 +257,7 @@ data.raw.recipe["rocket-part"].ingredients =
   {type = "item", name = "low-density-structure", amount = 10},
   {type = "item", name = "rocket-fuel", amount = 10}
 }
-data.raw.technology["rocket-silo"].prerequisites = {"quantum-processor"}
+data.raw.technology["rocket-silo"].prerequisites = {"quantum-processor", "speed-module-3", "productivity-module-3", "solar-energy", "radar", "electric-energy-accumulators"}
 data.raw.technology["rocket-silo"].unit.ingredients =
 {
         {"automation-science-pack", 1},
@@ -347,41 +321,71 @@ data:extend({
     results = {{type="item", name="satellite", amount=1}},
     requester_paste_multiplier = 1
   },
-
-  {
-    type = "technology",
-    name = "lava-processing",
---     localised_name = "Lava Processing",
---     localised_description = "Enables processing Molten Iron and Molten Copper from Lava.",
-    icon = "__space-age__/graphics/icons/fluid/lava.png",
-    icon_size = 64,
-    effects = {
-      {
-        type = "unlock-recipe",
-        recipe = "molten-iron-from-lava"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "molten-copper-from-lava"
-      }
-    },
-    prerequisites = {"production-science-pack", "metallurgic-science-pack"},
-    unit = {
-      count = 1000,
-      ingredients =
-      {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1},
-        {"production-science-pack", 1},
-        {"metallurgic-science-pack", 1}
-      },
-      time = 30
-    }
-  }
-
 })
+if settings.startup["saws-lava"].value == true then
+    data.raw["autoplace-control"]["vulcanus_volcanism"]["can_be_disabled"] = false
+    data.raw["autoplace-control"]["vulcanus_volcanism"]["order"] = nil
+    data.raw["autoplace-control"]["vulcanus_volcanism"]["category"] = "resource"
+    data.raw.planet.nauvis.map_gen_settings.autoplace_settings.tile.settings["lava"] = {}
+    data.raw.tile["lava"].autoplace = resource_autoplace.resource_autoplace_settings
+        {
+          name = "lava",
+          order = "a",
+          base_density = 7,
+          base_spots_per_km2 = 0.04,
+          random_probability = 1,
+          random_spot_size_minimum = 0.2,
+          random_spot_size_maximum = 0.7,
+          has_starting_area_placement = false,
+          autoplace_control_name = "vulcanus_volcanism"
+        }
+    data.raw.tile["lava-hot"].autoplace = resource_autoplace.resource_autoplace_settings
+        {
+          name = "lava",
+          order = "a",
+          base_density = 7,
+          base_spots_per_km2 = 0.01,
+          random_probability = 1,
+          random_spot_size_minimum = 0.2,
+          random_spot_size_maximum = 0.6,
+          has_starting_area_placement = false,
+          autoplace_control_name = "vulcanus_volcanism"
+        }
+    data:extend({
+      {
+        type = "technology",
+        name = "lava-processing",
+    --     localised_name = "Lava Processing",
+    --     localised_description = "Enables processing Molten Iron and Molten Copper from Lava.",
+        icon = "__space-age__/graphics/icons/fluid/lava.png",
+        icon_size = 64,
+        effects = {
+          {
+            type = "unlock-recipe",
+            recipe = "molten-iron-from-lava"
+          },
+          {
+            type = "unlock-recipe",
+            recipe = "molten-copper-from-lava"
+          }
+        },
+        prerequisites = {"production-science-pack", "metallurgic-science-pack"},
+        unit = {
+          count = 1000,
+          ingredients =
+          {
+            {"automation-science-pack", 1},
+            {"logistic-science-pack", 1},
+            {"chemical-science-pack", 1},
+            {"production-science-pack", 1},
+            {"metallurgic-science-pack", 1}
+          },
+          time = 30
+        }
+      }
 
+    })
+end
 
 data.raw.technology["agricultural-science-pack"].prerequisites = {"bioflux"}
 data.raw.technology["agricultural-science-pack"].research_trigger = nil
@@ -671,6 +675,8 @@ data.raw.technology.foundry.effects = {
       },
     }
 table.insert(data.raw.technology["low-density-structure"].effects, {type = "unlock-recipe", recipe = "casting-low-density-structure"})
+table.insert(data.raw.technology["low-density-structure-productivity"].prerequisites, "low-density-structure")
+table.insert(data.raw.technology["rocket-fuel-productivity"].prerequisites, "rocket-fuel")
 
 data.raw.technology["agriculture"].prerequisites = {"chemical-science-pack", "landfill"}
 data.raw.technology["agriculture"].research_trigger = nil
@@ -700,21 +706,25 @@ data.raw.technology["heating-tower"].unit =
       },
     time = 15
 }
-data.raw.technology["bacteria-cultivation"].prerequisites = {"agricultural-science-pack", "production-science-pack"}
-data.raw.technology["bacteria-cultivation"].research_trigger = nil
-data.raw.technology["bacteria-cultivation"].unit =
-{
-    count = 300,
-    ingredients =
-      {
-        { "automation-science-pack", 1 },
-        { "logistic-science-pack", 1 },
-        { "chemical-science-pack", 1 },
-        { "production-science-pack", 1 },
-        { "agricultural-science-pack", 1 },
-      },
-    time = 15
-}
+if settings.startup["saws-bacteria-cultivation"].value == true then
+    data.raw.technology["bacteria-cultivation"].prerequisites = {"agricultural-science-pack", "production-science-pack"}
+    data.raw.technology["bacteria-cultivation"].research_trigger = nil
+    data.raw.technology["bacteria-cultivation"].unit =
+    {
+        count = 300,
+        ingredients =
+          {
+            { "automation-science-pack", 1 },
+            { "logistic-science-pack", 1 },
+            { "chemical-science-pack", 1 },
+            { "production-science-pack", 1 },
+            { "agricultural-science-pack", 1 },
+          },
+        time = 15
+    }
+else
+    data.raw.technology["bacteria-cultivation"] = nil
+end
 data.raw.technology["bioflux-processing"].prerequisites = {"agricultural-science-pack", "rocket-fuel"}
 data.raw.technology["bioflux-processing"].research_trigger = nil
 data.raw.technology["bioflux-processing"].unit =
@@ -888,7 +898,7 @@ data.raw["research-with-science-pack-achievement"]["research-with-promethium"] =
 
 for _, category in pairs(data.raw) do
     for name, data in pairs(category) do
-        if data.surface_conditions then
+        if data.surface_conditions and data.type ~= "explosion" then
             data.surface_conditions = nil
         end
     end

@@ -4,8 +4,22 @@ data:extend({
     name = "saws-scrap-recipe",
     setting_type = "startup",
     default_value = "space-age",
-    allowed_values = { "space-age", "no-ice", "ore-only" },
-    order = "a"
+    allowed_values = { "space-age", "nerfed", "no-ice", "ore-only" },
+    order = "a-ab"
+  },
+  {
+    type = "bool-setting",
+    name = "saws-lava",
+    setting_type = "startup",
+    default_value = false,
+    order = "a-b"
+  },
+  {
+    type = "bool-setting",
+    name = "saws-bacteria-cultivation",
+    setting_type = "startup",
+    default_value = false,
+    order = "a-c"
   },
   {
     type = "bool-setting",

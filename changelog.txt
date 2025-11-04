@@ -1,3 +1,16 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.0.17
+Data: 2025-11-04
+  Features:
+    - Options to turn off Lava/Lava Processing and Bacteria Cultivation
+  Changes:
+    - Rocket Silo research now additionally requires Speed Module 3, Productivity Module 3, Solar Panel, Accumulator, and Radar
+  Fixes:
+    - Victory screen should no longer be broken
+    - Atomic Bombs should behave as would be expected on Nauvis
+    - Low Density Structure Productivity research now requires Low Density Structure research
+    - Rocket Fuel Productivity research now requires Rocket Fuel research
+---------------------------------------------------------------------------------------------------
 Version: 0.0.16
 Date: 2024-12-09
   Features:
