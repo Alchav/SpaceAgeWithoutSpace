@@ -192,8 +192,12 @@ data.raw.tile["ammoniacal-ocean-2"].autoplace = resource_autoplace.resource_auto
 
 nauvis_tiles = {"grass-1", "grass-2", "grass-3", "grass-4", "dry-dirt", "dirt-1", "dirt-2", "dirt-3", "dirt-4", "dirt-5", "dirt-6", "dirt-7", "sand-1", "sand-2", "sand-3", "red-desert-0", "red-desert-1", "red-desert-2", "red-desert-3"}
 for _, tile in pairs(nauvis_tiles) do
-    table.insert(data.raw.item["overgrowth-yumako-soil"]["place_as_tile"]["tile_condition"], tile)
-    table.insert(data.raw.item["overgrowth-jellynut-soil"]["place_as_tile"]["tile_condition"], tile)
+    if data.raw.item["overgrowth-yumako-soil"]["place_as_tile"]["tile_condition"] then
+        table.insert(data.raw.item["overgrowth-yumako-soil"]["place_as_tile"]["tile_condition"], tile)
+    end
+    if data.raw.item["overgrowth-jellynut-soil"]["place_as_tile"]["tile_condition"] then
+        table.insert(data.raw.item["overgrowth-jellynut-soil"]["place_as_tile"]["tile_condition"], tile)
+	end
 end
 
 gleba_trees = {
