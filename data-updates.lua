@@ -196,6 +196,11 @@ for _, tile in pairs(nauvis_tiles) do
     table.insert(data.raw.item["overgrowth-jellynut-soil"]["place_as_tile"]["tile_condition"], tile)
 end
 
+nauvis_water_tiles = {"water", "deepwater", "water-green", "deepwater-green", "water-shallow", "water-mud"}
+for _, tile in pairs(nauvis_water_tiles) do
+    table.insert(data.raw.item["ice-platform"]["place_as_tile"]["tile_condition"], tile)
+end
+
 gleba_trees = {
     "cuttlepop",
     "sunnycomb",
