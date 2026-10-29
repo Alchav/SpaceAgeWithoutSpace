@@ -18,6 +18,8 @@ for _, tech in pairs(data.raw.technology) do
                 tech.prerequisites[i] = "processing-unit"
             elseif prerequisite == "advanced-asteroid-processing" then
                 tech.prerequisites[i] = "advanced-material-processing-2"
+            elseif prerequisite == "stellar-discovery-solar-system-edge" then
+                tech.prerequisites[i] = "space-science-pack"
             end
         end
     end

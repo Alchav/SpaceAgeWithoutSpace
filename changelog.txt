@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.0.18
+Date: 2026-10-29
+  Changes:
+    - Updated for Factorio 2.1.
+    - Landing Pad Unloading Bay research (new in 2.1) now requires Rocket Silo research.
+    - Removed the Solar System Edge discovery research (new in 2.1).
+  Fixes:
+    - Fixed crash on load: science packs are now plain items instead of tools.
+    - Updated recipe categories, product probabilities and music track planets to the 2.1 prototype format.
+    - Foundry research unlocks the renamed Iron Ore Melting and Copper Ore Melting recipes.
+    - The Vulcanus main menu simulation is removed again (renamed in 2.1).
+---------------------------------------------------------------------------------------------------
 Version: 0.0.17
 Date: 2025-11-04
   Features:
