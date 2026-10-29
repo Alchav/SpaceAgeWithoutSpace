@@ -307,7 +307,7 @@ data:extend({
     name = "satellite",
     energy_required = 5,
     enabled = false,
-    category = "crafting",
+    categories = {"crafting"},
     ingredients =
     {
       {type = "item", name = "low-density-structure", amount = 100},
@@ -496,6 +496,12 @@ data.raw.technology["asteroid-reprocessing"] = nil
 data.raw.technology["advanced-asteroid-processing"] = nil
 data.raw.technology["promethium-science-pack"] = nil
 data.raw.technology["asteroid-productivity"] = nil
+data.raw.technology["stellar-discovery-solar-system-edge"] = nil
+
+-- Added in 2.1 and required Space Science, which was just stripped from it above
+if data.raw.technology["landing-pad-unloading-bay"] then
+    data.raw.technology["landing-pad-unloading-bay"].prerequisites = {"rocket-silo"}
+end
 
 for lab, lab_data in pairs(data.raw.lab) do
     local inputs = lab_data.inputs
@@ -513,41 +519,41 @@ local scrap_recipe_setting = settings.startup["saws-scrap-recipe"].value
 if scrap_recipe_setting == "no-ice" then
     data.raw.recipe["scrap-recycling"].results =
         {
-          {type = "item", name = "processing-unit",        amount = 1, probability = 0.02, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "advanced-circuit",       amount = 1, probability = 0.03, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "low-density-structure",  amount = 1, probability = 0.01, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "solid-fuel",             amount = 1, probability = 0.07, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "steel-plate",            amount = 1, probability = 0.04, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "concrete",               amount = 1, probability = 0.06, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "battery",                amount = 1, probability = 0.04, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "stone",                  amount = 1, probability = 0.04, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "holmium-ore",            amount = 1, probability = 0.01, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "iron-gear-wheel",        amount = 1, probability = 0.20, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "copper-cable",           amount = 1, probability = 0.03, show_details_in_recipe_tooltip = false}
+          {type = "item", name = "processing-unit",        amount = 1, independent_probability = 0.02, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "advanced-circuit",       amount = 1, independent_probability = 0.03, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "low-density-structure",  amount = 1, independent_probability = 0.01, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "solid-fuel",             amount = 1, independent_probability = 0.07, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "steel-plate",            amount = 1, independent_probability = 0.04, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "concrete",               amount = 1, independent_probability = 0.06, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "battery",                amount = 1, independent_probability = 0.04, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "stone",                  amount = 1, independent_probability = 0.04, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "holmium-ore",            amount = 1, independent_probability = 0.01, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "iron-gear-wheel",        amount = 1, independent_probability = 0.20, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "copper-cable",           amount = 1, independent_probability = 0.03, show_details_in_recipe_tooltip = false}
         }
 elseif scrap_recipe_setting == "nerfed" then
     data.raw.recipe["scrap-recycling"].results =
         {
-          {type = "item", name = "processing-unit",        amount = 1, probability = 0.002, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "advanced-circuit",       amount = 1, probability = 0.003, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "low-density-structure",  amount = 1, probability = 0.001, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "solid-fuel",             amount = 1, probability = 0.007, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "steel-plate",            amount = 1, probability = 0.004, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "concrete",               amount = 1, probability = 0.06, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "battery",                amount = 1, probability = 0.004, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "stone",                  amount = 1, probability = 0.04, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "holmium-ore",            amount = 1, probability = 0.01, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "iron-gear-wheel",        amount = 1, probability = 0.20, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "copper-cable",           amount = 1, probability = 0.03, show_details_in_recipe_tooltip = false}
+          {type = "item", name = "processing-unit",        amount = 1, independent_probability = 0.002, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "advanced-circuit",       amount = 1, independent_probability = 0.003, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "low-density-structure",  amount = 1, independent_probability = 0.001, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "solid-fuel",             amount = 1, independent_probability = 0.007, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "steel-plate",            amount = 1, independent_probability = 0.004, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "concrete",               amount = 1, independent_probability = 0.06, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "battery",                amount = 1, independent_probability = 0.004, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "stone",                  amount = 1, independent_probability = 0.04, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "holmium-ore",            amount = 1, independent_probability = 0.01, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "iron-gear-wheel",        amount = 1, independent_probability = 0.20, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "copper-cable",           amount = 1, independent_probability = 0.03, show_details_in_recipe_tooltip = false}
         }
 elseif scrap_recipe_setting == "ore-only" then
     data.raw.recipe["scrap-recycling"].results =
         {
-          {type = "item", name = "iron-ore",               amount = 1, probability = 0.20, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "copper-ore",             amount = 1, probability = 0.20, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "coal",                   amount = 1, probability = 0.10, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "stone",                  amount = 1, probability = 0.10, show_details_in_recipe_tooltip = false},
-          {type = "item", name = "holmium-ore",            amount = 1, probability = 0.01, show_details_in_recipe_tooltip = false}
+          {type = "item", name = "iron-ore",               amount = 1, independent_probability = 0.20, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "copper-ore",             amount = 1, independent_probability = 0.20, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "coal",                   amount = 1, independent_probability = 0.10, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "stone",                  amount = 1, independent_probability = 0.10, show_details_in_recipe_tooltip = false},
+          {type = "item", name = "holmium-ore",            amount = 1, independent_probability = 0.01, show_details_in_recipe_tooltip = false}
         }
 end
 
@@ -638,11 +644,11 @@ data.raw.technology.foundry.effects = {
       },
       {
         type = "unlock-recipe",
-        recipe = "molten-iron"
+        recipe = "iron-ore-melting"
       },
       {
         type = "unlock-recipe",
-        recipe = "molten-copper"
+        recipe = "copper-ore-melting"
       },
       {
         type = "unlock-recipe",
@@ -804,7 +810,7 @@ data.raw.technology["kovarex-enrichment-process"].unit =
   },
   time = 30
 }
-data.raw.tool["space-science-pack"].stack_size = 2000
+data.raw.item["space-science-pack"].stack_size = 2000
 
 data.raw["cargo-landing-pad"]["cargo-landing-pad"].trash_inventory_size = nil
 data.raw["cargo-landing-pad"]["cargo-landing-pad"].cargo_station_parameters =
@@ -880,7 +886,7 @@ main_menu_simulations.platform_moving = nil
 main_menu_simulations.platform_messy_nuclear = nil
 main_menu_simulations.vulcanus_lava_forge = nil
 main_menu_simulations.vulcanus_crossing = nil
-main_menu_simulations.vulcanus_punishmnent = nil
+main_menu_simulations.vulcanus_punishment = nil
 main_menu_simulations.vulcanus_sulfur_drop = nil
 main_menu_simulations.gleba_agri_towers = nil
 main_menu_simulations.gleba_pentapod_ponds = nil
@@ -907,11 +913,22 @@ for _, category in pairs(data.raw) do
     end
 end
 
+local function plays_on(music, planet)
+    for _, name in pairs(music.planets or {}) do
+        if name == planet then
+            return true
+        end
+    end
+    return false
+end
+
 for music_name, music in pairs(data.raw["ambient-sound"]) do
-    if (music.planet == "vulcanus" and settings.startup["saws-music-vulcanus"].value) or (music.planet == "fulgora" and settings.startup["saws-music-fulgora"].value) or (music.planet == "gleba" and settings.startup["saws-music-gleba"].value) or (music.planet == "aquilo" and settings.startup["saws-music-aquilo"].value) or (music.planet == nil and settings.startup["saws-music-space"].value) then
-        if music.track_type ~= "menu-track" then
+    -- Tracks with no planets/surface_names and not play_on_all_surfaces are space tracks
+    local is_space_track = music.planets == nil and music.surface_names == nil and not music.play_on_all_surfaces
+    if (plays_on(music, "vulcanus") and settings.startup["saws-music-vulcanus"].value) or (plays_on(music, "fulgora") and settings.startup["saws-music-fulgora"].value) or (plays_on(music, "gleba") and settings.startup["saws-music-gleba"].value) or (plays_on(music, "aquilo") and settings.startup["saws-music-aquilo"].value) or (is_space_track and settings.startup["saws-music-space"].value) then
+        if music.track_type ~= "menu-track" and music.track_type ~= "script-track" then
             log(music_name)
-            music.planet = "nauvis"
+            music.planets = {"nauvis"}
             if music.track_type == "hero-track" then
                 music.track_type = "main-track"
             end
